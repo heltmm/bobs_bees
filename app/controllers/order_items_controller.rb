@@ -1,15 +1,15 @@
 class OrderItemsController < ApplicationController
   def create
     @order = current_order
-    @products = Product.all
-    @order_item = current_order.order_items.new
     @item = @order.order_items.new(item_params)
     if @order.save
       session[:order_id] = @order.id
       flash[:notice] = "Product Added to Cart"
-      redirect_to products_path
+      redirect_to cart_path
     else
-      render :template => "products/index"
+      @product = Product.find(item_params[:product_id])
+      @order_item = current_order.order_items.new
+      render :template => "products/show"
     end
 
   end
