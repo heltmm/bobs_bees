@@ -3,7 +3,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
     create_table :orders do |t|
       t.column :status, :string
       t.column :account_id, :integer
-      t.column :total_price, :bigdecimal
+      t.column :total_price, :decimal
 
       t.timestamps
     end
