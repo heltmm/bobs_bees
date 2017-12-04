@@ -1,3 +1,6 @@
+<% if @order %>
+  <%= render "layouts/errors", :object => @order %>
+<% end %>
 <% @products.each do |product| %>
  <p><%= product.name %> | <%= number_to_currency product.price %>
  <%= form_for @order_item do |f| %>
