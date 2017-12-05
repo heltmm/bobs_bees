@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
-  
-  resources :products
+
+  resources :products do
+    resources :reviews, only: [:new]
+  end
 
   resources :order_items
 

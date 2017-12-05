@@ -2,5 +2,25 @@
   <%= render "layouts/errors", :object => @order %>
 <% end %>
 
+
+
+
 <p><%= @product.name %> | <%= number_to_currency @product.price %></p>
+
 <%= render "products/form" %>
+<% if @reviews.any? %>
+  <p class="white">Recent Reviews: </p>
+  <% @reviews.each do |review| %>
+
+  <div class='card mt-3'>
+    <div class='card-body'>
+      <p><%=review.content_body %></p>
+      <p> - <%= review.user.username %></p>
+      <p> - <%= review.rating %></p>
+    </div>
+  </div>
+  <%end%>
+  <%= link_to 'Add a review', new_product_review_path(@product) %>
+<%else%>
+    <%= link_to 'Add a review', new_product_review_path(@product) %>
+<%end%>

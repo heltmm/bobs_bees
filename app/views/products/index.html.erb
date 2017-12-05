@@ -1,39 +1,23 @@
-<% @products.each do |product| %>
- <p><%= product.name %> | <%= number_to_currency product.price %></p>
- <%= link_to product.name, product_path(product), :class => "btn btn-primary" %>
-<% end %>
-<%= items_in_cart %>
 
 
-
-<% if @products.length > 0 %>
-  <div class="digg_pagination">
-      <%= will_paginate @products, :container => false %>
-  </div>
-  <div class="row">
-    <% @products.each do |product| %>
-      <div class='col-md-4'>
-        <div class="card mt-2 mb-2">
-          <img class="card-img-top" src="<%= product.img %>" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title"><%= product.name %></h4>
-            <% if @reviews[product.id] %>
-              <p>Average Review: <%= @reviews[product.id].round(2)%></p>
-            <% end %>
-            <p class="card-text"><%= product.country_of_origin %><br> $<%=product.cost%></p>
-            <%= link_to('View', product_path(product), :class => "btn btn-primary")  %>
-            <%= link_to "Delete", product_path(product), :class => "btn btn-danger",
-                           :data => {:confirm => "You sure?",
-                                     :method => "delete"} %>
-            <%= link_to "Edit", edit_product_path(product), :class => "btn btn-warning" %>
-          </div>
+<div class="row">
+  <% @products.each do |product| %>
+    <div class='col-md-4'>
+      <div class="card mt-2 mb-2">
+        <img class="card-img-top" src="" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title"><%= product.name %></h4>
+          <% if @reviews[product.id] %>
+            <p>Average Review: <%= @reviews[product.id].round(2)%></p>
+          <% end %>
+          <p class="card-text"><%= number_to_currency product.price %>></p>
+          <%= link_to('View', product_path(product), :class => "btn btn-primary")  %>
+          <%= link_to "Delete", product_path(product), :class => "btn btn-danger",
+                         :data => {:confirm => "You sure?",
+                                   :method => "delete"} %>
+          <%= link_to "Edit", edit_product_path(product), :class => "btn btn-warning" %>
         </div>
       </div>
-    <% end %>
-  </div>
-  <div class="digg_pagination mb-3">
-      <%= will_paginate @products, :container => false %>
-  </div>
-<% else %>
-  <h1 class="white">No Products Match</h1>
-<% end %>
+    </div>
+  <% end %>
+</div>
