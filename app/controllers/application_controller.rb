@@ -6,14 +6,19 @@ class ApplicationController < ActionController::Base
     if session[:order_id]
       Order.find(session[:order_id])
     else
-      guest = Account.create
-      guest.orders.new
+      Order.new
     end
   end
 
   def attach_order
-    if current_user # and current_order
-      current_order.update(account_id: 1)
+    binding.pry
+    # If a user has NO orders the pass off the current to the user's account
+    if !current_user.account.orders.any?
+      current_order.update(account_id: current_user.account.id)
+    # If there are NO items in the current order AND the user's account has an in progress order then make it the current_order
+    elsif (!current_order.order_items.first) and (current_user.account.orders.last.status === "In progress")
+      binding.pry
+      session[:order_id] = current_user.account.orders.last.id
     end
   end
 

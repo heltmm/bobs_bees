@@ -19,6 +19,17 @@ class OrderItemsController < ApplicationController
 
   end
 
+  def update
+    @order = current_order
+    @item = @order.order_items.find(params[:id])
+    @item.update(item_params)
+    if @order.save
+      session[:order_id] = @order.id
+      flash[:notice] = "Quantity Updated"
+      redirect_to cart_path
+    end
+  end
+
   def destroy
    @order = current_order
    @item = @order.order_items.find(params[:id])

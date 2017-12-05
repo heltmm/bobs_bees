@@ -1,14 +1,20 @@
 
 User.destroy_all
 Account.destroy_all
+Order.destroy_all
+OrderItem.destroy_all
 
-User.create!(email: 'test@gmail.com',
+p "Destroyed"
+
+u = User.create!(email: 'test@gmail.com',
           password: 'password',
           admin: true)
-Account.create
+
+Account.create!(:user_id => u.id)
+
 p "Created #{User.count} users"
 
-50.times do
+2.times do
    Product.create!(
                 name: Faker::Commerce.product_name,
                 price: Faker::Number.decimal(2,2),
