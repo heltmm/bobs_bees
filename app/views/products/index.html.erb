@@ -6,7 +6,7 @@
           <%= link_to product_path(product) do  %>
         <div class="card mt-2 mb-2">
 
-          <%= image_tag(product.photo.url(:large), class: "card-img-top") %>
+          <%= image_tag(product.photo.url(:medium), class: "card-img-top") %>
 
           <div class="card-body">
             <h4 class="card-title"><%= product.name %></h4>
