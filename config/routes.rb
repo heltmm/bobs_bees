@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :products do
-    resources :reviews, only: [:new]
+    resources :reviews
   end
 
   resources :order_items
