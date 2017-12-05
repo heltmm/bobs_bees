@@ -2,3 +2,4 @@
  <p><%= product.name %> | <%= number_to_currency product.price %></p>
  <%= link_to product.name, product_path(product), :class => "btn btn-primary" %>
 <% end %>
+<%= items_in_cart %>
