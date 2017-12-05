@@ -13,6 +13,7 @@ class OrderItemsController < ApplicationController
     else
       @product = Product.find(item_params[:product_id])
       @order_item = current_order.order_items.new
+      @reviews = []
       render :template => "products/show"
     end
 
