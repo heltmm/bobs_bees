@@ -21,6 +21,7 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item ml-1 mr-1">
         <%= image_tag ('cart.png') %>
+        <%= items_in_cart %>
       </li>
       <li class="nav-item ml-1 mr-1">
         <% if user_signed_in? %>
