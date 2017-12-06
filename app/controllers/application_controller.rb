@@ -11,14 +11,16 @@ class ApplicationController < ActionController::Base
   end
 
   def attach_order
-    binding.pry
-    # If a user has NO orders the pass off the current to the user's account
-    if !current_user.account.orders.any?
+    # If a user has NO orders OR NO 'in progress' order we pass off the current order to the user's account
+    if (!current_user.account.orders.any?) || (!current_user.account.orders.last.status === "In progress")
       current_order.update(account_id: current_user.account.id)
-    # If there are NO items in the current order AND the user's account has an in progress order then make it the current_order
+    # If there are NO items in the current_order AND the user's account has an in progress order then make the 'in progress' order the current_order
     elsif (!current_order.order_items.first) and (current_user.account.orders.last.status === "In progress")
-      binding.pry
       session[:order_id] = current_user.account.orders.last.id
+    # We (ass)ume
+    # else
+    #   current_order.order_items do each
+    #   current_user.account.orders.last.order_item.push()
     end
   end
 
