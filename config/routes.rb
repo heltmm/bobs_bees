@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+  resources :charges
+
   resources :order_items
 
   resource :cart, only: [:show]

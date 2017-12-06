@@ -35,7 +35,8 @@ gem 'paperclip'
 gem 'devise'
 gem 'rest-client'
 gem 'rails_admin'
-
+gem 'stripe'
+gem 'dotenv'
 
 
 # Use Capistrano for deployment
