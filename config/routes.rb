@@ -5,11 +5,13 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  resources :charges
+  resources :charges, :only => [:new, :create]
 
   resources :order_items
 
   resource :cart, only: [:show]
 
   root :to => "products#index"
+
+  get "*path", to: redirect('/')
 end

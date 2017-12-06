@@ -84,6 +84,8 @@ GEM
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.0.1)
+    dotenv-rails (2.0.1)
+      dotenv (= 2.0.1)
     erubi (1.7.0)
     execjs (2.7.0)
     factory_bot (4.8.2)
@@ -315,6 +317,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dotenv
+  dotenv-rails
   factory_bot_rails (~> 4.0)
   faker
   jbuilder (~> 2.5)
