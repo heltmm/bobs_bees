@@ -28,9 +28,9 @@ class ApplicationController < ActionController::Base
 
     else
       order.order_items.each do |order_item|
-        order_item.update(:order_id => current_user.orders.last.id)
+        current_user.account.orders.last.update_order(order_item)
       end
-      Order.find(current_order.id).delete
+      Order.find(current_order.id).destroy
       session[:order_id] = current_user.account.orders.last.id
     end
   end
