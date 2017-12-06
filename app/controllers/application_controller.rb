@@ -17,10 +17,13 @@ class ApplicationController < ActionController::Base
     # If there are NO items in the current_order AND the user's account has an in progress order then make the 'in progress' order the current_order
     elsif (!current_order.order_items.first) and (current_user.account.orders.last.status === "In progress")
       session[:order_id] = current_user.account.orders.last.id
-    # We (ass)ume
-    # else
-    #   current_order.order_items do each
-    #   current_user.account.orders.last.order_item.push()
+    # We (ass)ume that there are items in the current_order AND the user has an order 'in progress'
+    else
+      current_order.order_items.each do |order_item|
+        order_item.update(:order_id => current_user.orders.last.id)
+      end
+      Order.find(current_order.id).delete
+      session[:order_id] = current_user.account.orders.last.id
     end
   end
 
@@ -30,7 +33,6 @@ class ApplicationController < ActionController::Base
   end
 
   # def after_sign_up_path_for(resource)
-  #   binding.pry
   #   current_user.account.create
   # end
 
