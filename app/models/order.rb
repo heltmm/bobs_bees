@@ -27,18 +27,14 @@ private
   end
 
   def is_in_cart
-    binding.pry
     self.order_items.where("product_id = #{@item_params[:product_id]}").first
   end
 
   def update_quantity(same_item)
-    binding.pry
     same_item.update(:quantity => same_item.quantity + @item_params[:quantity].to_i)
   end
 
   def new_item
-    binding.pry
-
     self.order_items.new(@item_params)
   end
 end
