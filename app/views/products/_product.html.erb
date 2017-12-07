@@ -1,0 +1,14 @@
+<div class="card mt-2 mb-2">
+
+  <%= image_tag(product.photo.url(:medium), class: "card-img-top") %>
+
+  <div class="card-body">
+    <h4 class="card-title"><%= product.name %></h4>
+    <% if @reviews[product.id] %>
+      <p>Average Review: <%= @reviews[product.id].round(2)%></p>
+    <% elsif %>
+      <p>No Reviews Yet</p>
+    <% end %>
+    <p class="card-text"><%= number_to_currency product.price %></p>
+  </div>
+</div>

@@ -14,7 +14,7 @@ Account.create!(:user_id => u.id)
 
 p "Created #{User.count} users"
 
-2.times do
+20.times do
    Product.create!(
                 name: Faker::Commerce.product_name,
                 price: Faker::Number.decimal(2,2),

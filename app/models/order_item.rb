@@ -7,7 +7,8 @@ class OrderItem < ApplicationRecord
   # def update_order
   #   same_item = is_in_cart ? update_quantity(same_item) : new_item
   # end
-
+  scope :most_recent, -> { order(created_at: :desc)}
+  
 private
   # def is_in_cart
   #   order.order_items.where("product_id = #{item_params[:product_id]}").first
