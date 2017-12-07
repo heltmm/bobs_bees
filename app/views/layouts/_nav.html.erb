@@ -7,10 +7,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <ul class="navbar-nav mr-auto">
+        <li class="nav-item ml-1 mr-1">
+          <%= link_to "All Products", products_path,:class => "nav-link text-dark link-text" %>
+        </li>
         <% if user_signed_in? %>
-          <li class="nav-item ml-1 mr-1">
-            <%= link_to "My Photos", new_user_registration_path,:class => "nav-link text-dark link-text" %>
-          </li>
           <li class="nav-item ml-1 mr-1">
             <%= link_to "Upload Photos", new_user_registration_path, :class => "nav-link text-dark link-text" %>
           </li>

@@ -316,7 +316,6 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.2)
   devise
-  dotenv
   dotenv-rails
   factory_bot_rails (~> 4.0)
   faker
