@@ -28,7 +28,7 @@ class OrderItemsController < ApplicationController
       flash[:notice] = "Quantity Updated"
       respond_to do |format|
         format.html {redirect_to cart_path}
-        format.js { render "carts/destroy" }
+        format.js { render "carts/update" }
       end
     end
 
