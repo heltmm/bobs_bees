@@ -1,4 +1,4 @@
-<div id="destroy_order_item_<%= item.id %>">
+<div id="order_item_<%= item.id %>">
   <%= image_tag(item.product.photo.url(:thumb)) %>
   <p><%= item.product.name %> | <%= link_to "Delete", order_item_path(item), :data => {:confirm => "You sure?", :method => "delete", remote: true} %></p>
 

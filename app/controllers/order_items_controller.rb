@@ -26,19 +26,26 @@ class OrderItemsController < ApplicationController
     if order.save
       session[:order_id] = order.id
       flash[:notice] = "Quantity Updated"
-      redirect_to cart_path
+      respond_to do |format|
+        format.html {redirect_to cart_path}
+        format.js { render "carts/destroy" }
+      end
     end
+
   end
 
   def destroy
     order = current_order
     @item = order.order_items.find(params[:id])
     @item.destroy
-    order.save
-    @total = current_order.total_price
-    respond_to do |format|
-      format.html {redirect_to cart_path}
-      format.js { render "carts/destroy" }
+    if order.save
+      flash[:notice] = nil
+      flash[:alert] = "Product removed!"
+      @total = current_order.total_price
+      respond_to do |format|
+        format.html {redirect_to cart_path}
+        format.js { render "carts/destroy" }
+      end
     end
   end
 
