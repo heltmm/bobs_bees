@@ -11,9 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def attach_order
-
     order = current_order
-
     # If a user has NO orders OR NO 'in progress' and current_order is saved order we update current order to the user's account if current_order is not saved we save current order to the user's acout.
     if (!does_user_have_order?) || (!user_in_progress_order?)
 
