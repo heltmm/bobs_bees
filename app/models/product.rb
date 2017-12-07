@@ -7,4 +7,10 @@ class Product < ApplicationRecord
 
   has_attached_file :photo, :styles => { :large => "600x600", :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
+
+  scope :honey, -> { where(category: "honey")}
+  scope :equipment, -> { where(category: "equipment")}
+  scope :hive, -> { where(category: "hive")}
+  scope :bee, -> { where(category: "bee")}
+  scope :bee_product, -> { where(category: "bee_product")}
 end

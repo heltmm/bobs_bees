@@ -1,6 +1,11 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    @products = Product.honey if params[:category] === "honey"
+    @products = Product.bee if params[:category] === "bee"
+    @products = Product.hive if params[:category] === "hive"
+    @products = Product.equipment if params[:category] === "equipment"
+    @products = Product.bee_product if params[:category] === "bee_product"
     @reviews = Review.group('product_id').average('rating')
   end
 
@@ -11,7 +16,7 @@ class ProductsController < ApplicationController
   end
 
   def home
-    
+
   end
 
 

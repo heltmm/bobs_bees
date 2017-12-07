@@ -26,6 +26,7 @@ class OrderItemsController < ApplicationController
     if order.save
       session[:order_id] = order.id
       flash[:notice] = "Quantity Updated"
+      @total = current_order.total_price
       respond_to do |format|
         format.html {redirect_to cart_path}
         format.js { render "carts/update" }

@@ -1,1 +1,3 @@
 $('#order_item_<%=@item.id%>').html("<%= j render 'carts/order_item', :item => @item %>");
+$('#total-price').html('<%= number_to_currency @total %>');
+$('#items-in-cart').html('<%= items_in_cart %>');
