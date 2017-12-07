@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :products do
     resources :reviews
   end
+  resource :home, :index
 
   resources :charges, :only => [:new, :create]
 
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
 
   resource :cart, only: [:show]
 
-  root :to => "products#index"
+  root :to => "products#home"
 
   get "*path", to: redirect('/')
 end

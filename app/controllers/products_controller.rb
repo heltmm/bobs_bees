@@ -10,8 +10,8 @@ class ProductsController < ApplicationController
     @reviews = @product.reviews
   end
 
-  def delete
-
+  def home
+    
   end
 
 
