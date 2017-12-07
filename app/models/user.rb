@@ -8,4 +8,5 @@ class User < ApplicationRecord
 
   has_one :account
   has_many :orders, through: :account
+  has_many :addresses, through: :account
 end

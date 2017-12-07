@@ -25,7 +25,9 @@ ActiveRecord::Schema.define(version: 20171207164343) do
   create_table "addresses", force: :cascade do |t|
     t.integer "account_id"
     t.string "type"
-    t.string "street"
+    t.string "full_name"
+    t.string "street1"
+    t.string "street2"
     t.string "state"
     t.string "city"
     t.integer "zipcode"

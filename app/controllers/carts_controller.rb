@@ -4,7 +4,7 @@ class CartsController < ApplicationController
 
   end
 
-  # def checkout
-  #   @account =
-  # end
+  def checkout
+    @address = Address.new
+  end
 end

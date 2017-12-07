@@ -10,9 +10,11 @@ Rails.application.routes.draw do
 
   resources :order_items
 
+  resources :addresses, :only => [:create]
+
   resource :cart, only: [:show]
 
   root :to => "products#home"
-  get "carts/checkout", to: "carts#checkout"
+  get "cart/checkout", to: "carts#checkout"
   get "*path", to: redirect('/')
 end
