@@ -1,5 +1,8 @@
 
-<%= form_tag(order_item_path(locals[:item]), method: "patch", remote: true) do %>
-  <%= number_field_tag :quantity, locals[:item].quantity, min: 1, max: 100, step: 1 %>
-  <%= submit_tag "Update Quantity" %>
+
+
+
+<%= form_for(item, remote: true) do |f|%>
+  <%= f.number_field :quantity, min: 1, max: 100, step: 1 %>
+  <%= f.submit "Update Quantity" %>
 <% end %>

@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   resource :cart, only: [:show]
 
   root :to => "products#home"
-
+  get "carts/checkout", to: "carts#checkout"
   get "*path", to: redirect('/')
 end

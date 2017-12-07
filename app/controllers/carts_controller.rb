@@ -4,4 +4,7 @@ class CartsController < ApplicationController
 
   end
 
+  # def checkout
+  #   @account =
+  # end
 end

@@ -3,6 +3,7 @@
   <div id="order_item_<%= item.id %>"><%= render 'order_item', :item => item %></div>
   <% end %>
   <p>Your Total: <span id='total-price'><%= number_to_currency current_order.total_price %></span></p>
+
 <% else %>
   <p>Your shopping cart is empty.</p>
 <% end %>

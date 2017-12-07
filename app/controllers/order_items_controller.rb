@@ -18,10 +18,9 @@ class OrderItemsController < ApplicationController
   end
 
   def update
-
     order = current_order
     @item = order.order_items.find(params[:id])
-    @item.update(:quantity => params.require(:quantity))
+    @item.update(item_params)
 
     if order.save
       session[:order_id] = order.id
