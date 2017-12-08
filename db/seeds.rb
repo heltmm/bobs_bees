@@ -1,4 +1,4 @@
-
+Product.destroy_all
 User.destroy_all
 Account.destroy_all
 Order.destroy_all
