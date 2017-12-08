@@ -1,4 +1,4 @@
 class Address < ApplicationRecord
-  belongs_to :order
+  has_many :orders
   belongs_to :account, optional: true
 end

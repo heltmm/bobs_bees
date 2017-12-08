@@ -1,18 +1,18 @@
 
-# User.destroy_all
-# Account.destroy_all
-# Order.destroy_all
-# OrderItem.destroy_all
-#
-# p "Destroyed"
-#
-# u = User.create!(email: 'test@gmail.com',
-#           password: 'password',
-#           admin: true)
-#
-# Account.create!(:user_id => u.id)
-#
-# p "Created #{User.count} users"
+User.destroy_all
+Account.destroy_all
+Order.destroy_all
+OrderItem.destroy_all
+
+p "Destroyed"
+
+u = User.create!(email: 'test@gmail.com',
+          password: 'password',
+          admin: true)
+
+Account.create!(:user_id => u.id)
+
+p "Created #{User.count} users"
 
 5.times do
    Product.create!(

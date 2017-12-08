@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   resource :cart, only: [:show]
 
   root :to => "products#home"
-  get "cart/checkout", to: "carts#checkout"
+
+  get "cart/selectaddress", to: "carts#selectaddress"
+  post "cart/processaddress", to: "carts#processaddress"
+
+
   get "*path", to: redirect('/')
 end

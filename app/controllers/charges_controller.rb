@@ -17,11 +17,15 @@ class ChargesController < ApplicationController
         :description => 'Bob\'s Bees LLC',
         :currency    => 'usd'
       )
-      current_order.status = "pending"
-      current_order.save
+      order = current_order
+      order.status = "pending"
+      if  order.save
+        session[:order_id] = nil
+      end
     end
   rescue Stripe::CardError => e
     flash[:alert] = e.message
     redirect_to new_charge_path
   end
+
 end

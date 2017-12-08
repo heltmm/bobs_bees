@@ -1,15 +1,21 @@
 class AddressesController < ApplicationController
   def create
-    if current_user
-      @address = current_user.account.address.new(address_params)
-    else
-      @address = current_order.address.new(address_params)
+    @address = Address.new(address_params)
+    if user = current_user
+      @address[:account_id] = user.account.id
     end
     if @address.save
       flash[:notice] = "Address successfully submitted!"
-      redirect_to cart_checkout_path()
+      current_order.update(:address_id => params[:address_id])
+      redirect_to new_charge_path
     else
-      render "carts/checkout"
+      if user = current_user
+        user_account = user.account
+        @current_order = current_order
+        @user_addresses = user_account.addresses if user_account.addresses.any?
+      end
+      @address = Address.new
+      render "carts/selectaddress"
     end
   end
 

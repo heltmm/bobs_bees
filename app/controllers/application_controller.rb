@@ -14,10 +14,8 @@ class ApplicationController < ActionController::Base
     order = current_order
     # If a user has NO orders OR NO 'in progress' and current_order is saved order we update current order to the user's account if current_order is not saved we save current order to the user's acout.
     if (!does_user_have_order?) || (!user_in_progress_order?)
-
       order_saved?(order) ? order.update(account_id: current_user.account.id) : Order.create(account_id: current_user.account.id)
-
-      session[:order_id] = current_user.account.orders.last.id
+      session[:order_id] = current_user.orders.last.id
     # If there are NO items in the current_order AND the user's account has an in progress order then make the 'in progress' order the current_order
     elsif (!items_in_order?) and (user_in_progress_order?)
 

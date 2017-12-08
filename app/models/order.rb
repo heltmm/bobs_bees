@@ -1,8 +1,8 @@
 class Order < ApplicationRecord
   belongs_to :account, optional: true
   has_many :order_items
-  has_one :address
-  
+  belongs_to :address, optional: true
+
   before_save :update_total
   before_create :update_status
 
