@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Future Features:
+
+Add account page where display current address and Past orders.
